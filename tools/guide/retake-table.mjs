@@ -1,0 +1,22 @@
+// Reprise ponctuelle de la capture de la table d'enchantement (zone dégagée autour).
+import { cmd, sleep, gameJson, closeRcon, waitFor, ROOT } from '../../tests/bots/lib.mjs';
+import { existsSync, statSync } from 'node:fs';
+import path from 'node:path';
+const file = path.join(ROOT, 'tools/camera-mod/run/screenshots/21_table_enchantement.png');
+const before = existsSync(file) ? statSync(file).mtimeMs : 0;
+await cmd('croque stop');
+await cmd('croque start');
+await sleep(2000);
+const [tx, ty, tz] = gameJson().enchantingTable;
+await cmd(`fill ${tx - 4} ${ty - 1} ${tz - 6} ${tx + 4} ${ty - 1} ${tz - 1} minecraft:grass_block`);
+await cmd(`fill ${tx - 4} ${ty} ${tz - 6} ${tx + 4} ${ty + 4} ${tz + 3} minecraft:air replace #minecraft:sand`);
+await cmd(`fill ${tx - 4} ${ty} ${tz - 6} ${tx + 4} ${ty + 4} ${tz - 1} minecraft:air`);
+await cmd(`time set 6000`);
+await cmd(`tp Joueur ${tx + 0.5} ${ty} ${tz - 3.5} facing ${tx + 0.5} ${ty + 0.3} ${tz + 0.5}`);
+await sleep(2000);
+await cmd('tellraw Joueur {"text":"cmcam:chat:clear"}');
+await cmd('tellraw Joueur {"text":"cmcam:shot:21_table_enchantement"}');
+console.log(await waitFor(() => existsSync(file) && statSync(file).mtimeMs > before, 8000) ? 'ok' : 'échec');
+await cmd('croque stop');
+await closeRcon();
+process.exit(0);

@@ -1,0 +1,95 @@
+# Configuration du plugin « Le Croquemitaine »
+lives:
+  start: 5
+
+map:
+  size-min: 300          # taille à players-min joueurs
+  size-max: 500          # taille à players-max joueurs
+  players-min: 5
+  players-max: 25
+  center:
+    x: 0
+    z: 0
+  world: world           # monde de jeu (overworld)
+  spawn-attempts: 100    # essais de position sûre avant repli au centre
+
+pvp:
+  # false (défaut) : aucune restriction technique, la matrice « qui frappe qui » est une règle d'honneur
+  # et le PvP indirect (potions, pièges à TNT, trous…) est libre. true : le plugin bloque les coups interdits.
+  enforce: false
+  defense-radius: 40     # passif/hostile → croque/assassin (si enforce: true)
+  kill-credit-seconds: 10
+
+rounds:
+  initial-minutes: 20
+  decrement-minutes: 2
+  min-minutes: 6
+  # Surcharges en secondes (tests) : si > 0, remplacent les valeurs en minutes
+  initial-seconds-override: 0
+  decrement-seconds-override: 0
+  min-seconds-override: 0
+  intermission-seconds: 0
+  announce-suspense-seconds: 5
+  power-choice-seconds: 15
+  roulette-delay-seconds: 3   # laisse lire « Tu es le Croquemitaine » avant d'ouvrir la roulette
+
+powers:
+  mode: choice           # choice : roulette de 2, le Croque choisit | random : tiré au hasard
+  inherit: true          # chaque Croque hérite des pouvoirs des Croques précédents
+  # poids de tirage, 0 = désactivé
+  tracker: 10
+  shadow: 10
+  predator: 10
+  brute: 10
+  shell: 10
+  reprieve: 10
+  disguise: 0            # désactivé (retour joueurs : le Croque suivant reconnaîtrait le précédent)
+  second_wind: 5
+  blind: 10
+  shadow_step: 5
+  bite: 10
+  reveal: 10
+  settings:
+    reprieve-minutes: 3
+    shadow-duration-seconds: 20
+    shadow-cooldown-seconds: 120
+    blind-radius: 8
+    blind-duration-seconds: 4
+    blind-cooldown-seconds: 90
+    shadow-step-range: 30
+    tracker-update-seconds: 5
+    bite-slowness-seconds: 3
+    reveal-duration-seconds: 10
+
+elimination:
+  # spectator : les éliminés deviennent spectateurs (menu vanilla, touche 1, pour se téléporter de joueur en joueur)
+  # box       : ils restent enfermés dans une boîte de barrières au-dessus de la carte
+  mode: box
+  private-chat: true     # le chat des éliminés n'est lu que par les autres éliminés (pas de fuite d'infos)
+
+elimination-box:
+  y: 300                 # bornée automatiquement sous la hauteur max du monde
+  inner-size: 9          # côté intérieur (assez pour 25 joueurs)
+  inner-height: 4
+
+endgame:
+  shrink-delay-seconds: 60
+  shrink-target-size: 30
+  shrink-duration-seconds: 600
+
+rules:
+  mob-egg-chance: 0.25   # boosté : encourage le PvP indirect
+  mob-egg-excluded: [ENDER_DRAGON, WITHER, WARDEN, ELDER_GUARDIAN]
+  tnt-simplified: true
+  helmet-ban: true
+  helmet-mode: poison   # poison : casque portable mais Poison II tant qu'il est porté | block : impossible à équiper
+  phantoms: false       # false : aucun phantom (gamerule + tout autre spawn bloqué)
+  enchanting-table-at-center: true
+  immediate-respawn: false
+  recovery-compass: false   # boussole de récupération à la réapparition
+
+voice:
+  mute-eliminated: true
+
+storage:
+  autosave-seconds: 30

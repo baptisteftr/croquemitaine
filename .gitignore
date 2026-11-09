@@ -1,0 +1,9 @@
+.gradle/
+build/
+/run/
+.idea/
+*.iml
+tests/bots/node_modules/
+.DS_Store
+run-server.out
+test-run.log

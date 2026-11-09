@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "croquemitaine_camera",
+  "version": "${version}",
+  "name": "Croquemitaine Camera",
+  "description": "Outil de démonstration : rejoint le serveur local et prend des captures d'écran sur ordre du serveur Croquemitaine.",
+  "environment": "client",
+  "entrypoints": { "client": ["fr.croquemitaine.camera.CameraMod"] },
+  "depends": { "fabricloader": ">=0.20.1", "minecraft": "26.3", "fabric-api": "*", "java": ">=25" }
+}

@@ -1,0 +1,10 @@
+name: Croquemitaine
+version: '${version}'
+main: fr.croquemitaine.CroquemitainePlugin
+api-version: '26.3'
+description: Mini-jeu « Le Croquemitaine » — dernier survivant, 5 vies, un tueur secret par manche.
+softdepend: [voicechat]
+permissions:
+  croque.admin:
+    description: Commandes d'administration du Croquemitaine
+    default: op

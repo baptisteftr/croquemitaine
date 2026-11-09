@@ -1,0 +1,118 @@
+# Messages joueurs (MiniMessage). Placeholders : <player>, <lives>, <time>, <round>, etc.
+prefix: "<dark_gray>[<dark_red>Croquemitaine</dark_red>]</dark_gray> "
+
+game:
+  started: "<green>La partie commence ! Carte de <size>×<size>. Bonne chance…"
+  stopped: "<red>La partie a été arrêtée."
+  started-admin: "<green>Partie lancée."
+  paused: "<yellow>Partie en pause."
+  resumed: "<green>Partie reprise."
+  already-running: "<red>Une partie est déjà en cours."
+  not-running: "<red>Aucune partie en cours."
+  not-enough-players: "<red>Aucun joueur connecté pour démarrer."
+  round-start: "<gold>Manche <round></gold> <gray>— elle durera <time>."
+  round-start-no-croque: "<gray>Pas de Croquemitaine pour cette manche."
+  intermission: "<gray>Entracte : prochaine manche dans <time>."
+  late-join: "<gray>Tu rejoins la partie en cours avec <lives> vies."
+
+lives:
+  lost: "<red>Tu as perdu une vie. Vies restantes : <lives>"
+  eliminated-broadcast: "<dark_red><player> a été éliminé !"
+  eliminated-self: "<dark_red>Tu es éliminé. Tu peux observer depuis la boîte."
+  eliminated-self-spectator: "<dark_red>Tu es éliminé.</dark_red> <gray>Tu es spectateur : appuie sur <white>1</white> pour te téléporter à un joueur. Ton chat n'est lu que par les éliminés."
+  category-change: "<gray>Tu es maintenant <category>."
+
+category:
+  passive: "<green>passif</green>"
+  hostile: "<yellow>hostile</yellow>"
+  assassin: "<red>assassin</red>"
+  eliminated: "<dark_gray>éliminé</dark_gray>"
+
+tab-suffix: " <gray><lives>♥"
+
+death:
+  history-header: "<gold>Historique des morts de <player> :"
+  history-empty: "<gray>Aucune mort enregistrée."
+  history-line: "<gray>#<index> <white><date></white> — <yellow><x> <y> <z></yellow> — <cause><killer>"
+  history-killer: " <red>(tué par <killer>)</red>"
+  unknown-player: "<red>Joueur inconnu de la partie."
+
+announce:
+  suspense-title: "<dark_red><b>Croquemitaine</b>"
+  suspense-subtitle-frames: ["<gray>Qui sera-ce ?", "<gray>Qui sera-ce ? .", "<gray>Qui sera-ce ? . .", "<gray>Qui sera-ce ? . . ."]
+  you-are-title: "<dark_red><b>Tu es le Croquemitaine</b>"
+  you-are-subtitle: "<red>Tue un passif ou un hostile avant la fin du chrono."
+  not-you-title: "<green>Tu n'es pas le Croquemitaine"
+  not-you-subtitle: "<gray>Méfie-toi…"
+
+croque:
+  bossbar: "<dark_red>Mission du Croquemitaine</dark_red> <gray>—</gray> <white><time>"
+  success: "<green>Mission accomplie : tu es libéré de la malédiction.</green> <gray>Reste discret, la manche continue."
+  failed-timeout: "<red>Le temps est écoulé : tu perds une vie."
+  failed-death: "<red>Tu es mort : ta mission de Croquemitaine échoue."
+  second-wind: "<gold>Second souffle : ta mission continue !"
+  forced: "<yellow><player> est désormais le Croquemitaine."
+
+powers:
+  roulette-title: "<dark_red>Choisis ton pouvoir"
+  chosen: "<gold>Pouvoir obtenu : <power>"
+  cooldown: "<red>Pouvoir en recharge : <time>"
+  used-up: "<red>Ce pouvoir a déjà été utilisé."
+  no-target: "<red>Aucune cible à portée."
+  item-lore: "<gray>Clic droit pour utiliser"
+  names:
+    tracker: "Traqueur"
+    shadow: "Ombre"
+    predator: "Prédateur"
+    brute: "Brute"
+    shell: "Carapace"
+    reprieve: "Sursis"
+    disguise: "Déguisement"
+    second_wind: "Second souffle"
+    blind: "Aveuglement"
+    shadow_step: "Saut de l'ombre"
+    bite: "Morsure"
+    reveal: "Révélation"
+  descriptions:
+    tracker: "Une boussole pointe vers la cible la plus proche (maj toutes les 5 s)."
+    shadow: "Invisibilité 20 s (armure masquée), recharge 2 min."
+    predator: "Vitesse II pendant toute la mission."
+    brute: "Force I pendant toute la mission."
+    shell: "Résistance I pendant toute la mission."
+    reprieve: "+3 minutes sur ton chrono (seulement quand tu le tires, pas en héritage)."
+    disguise: "Ton pseudo apparaît vert foncé avec 5 vies."
+    second_wind: "Ta première mort ne fait pas échouer la mission."
+    blind: "Cécité 4 s aux joueurs proches (8 blocs), recharge 90 s."
+    shadow_step: "Une fois : TP derrière la cible la plus proche (30 blocs)."
+    bite: "Tes coups infligent Lenteur II 3 s."
+    reveal: "Une fois : révèle la cible la plus proche pendant 10 s."
+
+rules:
+  helmet-banned: "<red>Les casques sont interdits !"
+  helmet-poison: "<red>Casque interdit :</red> <gray>tu es empoisonné tant que tu le portes !"
+  table-protected: "<red>Cette table d'enchantement est indestructible."
+
+endgame:
+  victory-title: "<gold><b><player></b>"
+  victory-subtitle: "<yellow>remporte la partie !"
+  victory-broadcast: "<gold><player> est le dernier survivant et remporte la partie !"
+  no-survivor: "<gray>Plus aucun survivant… partie terminée."
+  assassins-only: "<red>Il ne reste que des assassins ! La bordure va se refermer dans <time>."
+  shrinking: "<red>La bordure se referme !"
+
+admin:
+  status-header: "<gold>Statut : <phase>, manche <round>, chrono <time>"
+  status-croque: "<gold>Croque : <player> <gray>(pouvoir : <power>)"
+  status-no-croque: "<gold>Croque : <gray>aucun"
+  status-line: "<gray>- <player> : <lives> vies (<category>)<online>"
+  offline-tag: " <dark_gray>[déco]"
+  lives-set: "<green><player> a maintenant <lives> vies."
+  revived: "<green><player> est ressuscité avec 1 vie."
+  not-eliminated: "<red><player> n'est pas éliminé."
+  border-set: "<green>Bordure réglée à <size> blocs."
+  reloaded: "<green>Configuration et messages rechargés."
+  skipped: "<yellow>Manche passée."
+  force-not-eligible: "<red><player> ne peut pas être Croquemitaine (assassin, éliminé ou hors partie)."
+  unknown-player: "<red>Ce joueur ne fait pas partie de la partie."
+  givepower: "<green>Pouvoir <power> donné au Croquemitaine."
+  givepower-failed: "<red>Impossible : pas de Croquemitaine actif ou pouvoir inconnu (<power>)."

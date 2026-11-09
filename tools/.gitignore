@@ -1,0 +1,6 @@
+node_modules/
+build/
+*.png
+guide/sheet_*.png
+guide/sheet.html
+guide/director.log

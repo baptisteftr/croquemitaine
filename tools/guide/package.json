@@ -1,0 +1,11 @@
+{
+  "name": "croquemitaine-guide",
+  "private": true,
+  "type": "module",
+  "description": "Réalisateur des captures (RCON + bots) et génération du guide PDF (Puppeteer)",
+  "dependencies": {
+    "mineflayer": "4.39.0",
+    "puppeteer": "25.16.0",
+    "rcon-client": "4.2.5"
+  }
+}

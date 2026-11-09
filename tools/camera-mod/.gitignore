@@ -1,0 +1,7 @@
+run/*
+!run/options.txt
+!run/config/
+run/config/*
+!run/config/croquemitaine-camera.properties
+build/
+.gradle/

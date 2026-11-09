@@ -1,0 +1,10 @@
+{
+  "name": "croquemitaine-bots",
+  "private": true,
+  "type": "module",
+  "description": "Scénarios de test Mineflayer + RCON pour le plugin Croquemitaine (serveur local uniquement)",
+  "dependencies": {
+    "mineflayer": "^4.39.0",
+    "rcon-client": "^4.2.5"
+  }
+}

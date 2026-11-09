@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Le Croquemitaine — Guide du joueur</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  :root { --ink: #1d1b1a; --muted: #5f5853; --accent: #9b1c1c; --line: #e4ddd6; --soft: #f7f3ef;
+          --passif: #1f7a2e; --passif2: #49b34e; --hostile: #c9a400; --hostile2: #d9822b; --assassin: #c62828; }
+  * { box-sizing: border-box; }
+  body { font: 10.5pt/1.5 -apple-system, "Helvetica Neue", Arial, sans-serif; color: var(--ink); margin: 0; }
+  h1 { font-size: 30pt; line-height: 1.1; margin: 0 0 6mm; letter-spacing: -0.5px; }
+  h2 { font-size: 17pt; color: var(--accent); margin: 0 0 3mm; padding-bottom: 2mm; border-bottom: 2px solid var(--accent); }
+  h3 { font-size: 12.5pt; margin: 6mm 0 2mm; }
+  p { margin: 0 0 2.5mm; }
+  ul { margin: 0 0 3mm; padding-left: 5mm; }
+  li { margin-bottom: 1mm; }
+  section { break-before: page; }
+  figure { margin: 3mm 0 4mm; break-inside: avoid; }
+  figure img { width: 100%; display: block; border-radius: 3px; border: 1px solid var(--line); }
+  figcaption { font-size: 9pt; color: var(--muted); margin-top: 1.5mm; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+  .trio figure { margin: 2mm 0; }
+  section.cont { break-before: auto; margin-top: 8mm; }
+  .pair figure { margin: 2mm 0; }
+  .box { background: var(--soft); border-left: 3px solid var(--accent); padding: 3mm 4mm; margin: 3mm 0; break-inside: avoid; }
+  .box p:last-child, .box ul:last-child { margin-bottom: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; font-size: 9.5pt; break-inside: avoid; }
+  th, td { border: 1px solid var(--line); padding: 1.6mm 2.2mm; text-align: left; vertical-align: top; }
+  th { background: var(--soft); }
+  .c { text-align: center; }
+  .chip { display: inline-block; padding: 0 2mm; border-radius: 2px; color: #fff; font-weight: 600; font-size: 9pt; }
+  .k { font-family: Menlo, monospace; font-size: 9pt; background: var(--soft); padding: 0 1mm; border-radius: 2px; }
+  .cover { height: 265mm; display: flex; flex-direction: column; justify-content: space-between; }
+  .cover .kicker { color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 10pt; }
+  .cover .lead { font-size: 13pt; color: var(--muted); max-width: 150mm; }
+  .cover figure img { border: none; }
+  .toc { columns: 2; font-size: 10pt; }
+  .toc li { break-inside: avoid; }
+  .yes { color: #1f7a2e; font-weight: 700; } .no { color: #b3261e; font-weight: 700; } .cond { color: #8a6d00; font-weight: 700; }
+  .small { font-size: 9pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div>
+    <div class="kicker">Mini-jeu Minecraft · Paper 26.3</div>
+    <h1>Le Croquemitaine<br>Guide du joueur</h1>
+    <p class="lead">Cinq vies, une carte fermée, et à chaque manche un tueur secret désigné parmi vous. Ce guide explique chaque phase de la partie, rôle par rôle, avec des captures réelles du jeu.</p>
+  </div>
+  <figure><img src="shots/12_tu_es_le_croque.jpg"><figcaption>Ce que voit le joueur désigné Croquemitaine.</figcaption></figure>
+  <div>
+    <h3>Sommaire</h3>
+    <ol class="toc">
+      <li>La partie en bref</li>
+      <li>Pour tous : vies, couleurs, mort</li>
+      <li>Les rôles : passif, hostile, assassin, éliminé</li>
+      <li>Qui peut frapper qui ?</li>
+      <li>Le Croquemitaine : l'annonce</li>
+      <li>Le Croquemitaine : pouvoirs et mission</li>
+      <li>Face au Croquemitaine</li>
+      <li>Règles spéciales</li>
+      <li>Fin de partie</li>
+      <li>Pour l'organisateur</li>
+    </ol>
+  </div>
+</div>
+
+<section>
+  <h2>1. La partie en bref</h2>
+  <ul>
+    <li><b>But :</b> être le <b>dernier joueur en vie</b>. Chacun démarre avec <b>5 vies</b>.</li>
+    <li><b>Toute mort coûte une vie</b> : monstre, chute, lave, joueur… peu importe la cause.</li>
+    <li>Ton <b>nombre de vies fixe ton rôle</b> (passif, hostile, assassin) et donc qui tu as le droit de frapper. Ces règles se respectent <b>sur l'honneur</b> : le jeu ne bloque aucun coup.</li>
+    <li>Le <b>PvP indirect est encouragé</b> : potions, pièges à TNT, trous, monstres sortis d'œufs…</li>
+    <li>La partie se joue en <b>manches</b>. Dès la manche 2, un joueur est désigné en secret <b>Croquemitaine</b> : il doit tuer quelqu'un avant la fin de son chrono.</li>
+    <li>Chaque nouveau Croquemitaine <b>hérite des pouvoirs</b> des précédents et en gagne un de plus, tandis que les manches <b>raccourcissent</b>.</li>
+    <li>La carte est <b>fermée par une bordure</b> (300 × 300 à 5 joueurs, jusqu'à 500 × 500 à 25). On apparaît à un endroit aléatoire.</li>
+    <li>On <b>garde son inventaire</b> à la mort. La barre de localisation est désactivée : impossible de repérer les autres à distance.</li>
+  </ul>
+  <figure><img src="shots/01_debut_partie.jpg"><figcaption>Lancement de la partie : le chat annonce la taille de la carte et la manche 1, qui se joue sans Croquemitaine.</figcaption></figure>
+  <div class="box">
+    <p><b>Durée des manches</b> (réglage par défaut) : 20 min à la manche 1, puis 2 min de moins à chaque manche, sans descendre sous 6 min. Sur les captures, les durées sont raccourcies pour la démonstration.</p>
+  </div>
+</section>
+
+<section>
+  <h2>2. Pour tous : vies, couleurs, mort</h2>
+  <p>La couleur de ton pseudo indique tes vies restantes, partout : au-dessus de ta tête, dans la liste des joueurs (touche <span class="k">Tab</span>) et dans le chat.</p>
+  <table>
+    <tr><th>Vies</th><th>Couleur</th><th>Rôle</th></tr>
+    <tr><td class="c">5</td><td><span class="chip" style="background:var(--passif)">Vert foncé</span></td><td rowspan="2">Passif</td></tr>
+    <tr><td class="c">4</td><td><span class="chip" style="background:var(--passif2)">Vert clair</span></td></tr>
+    <tr><td class="c">3</td><td><span class="chip" style="background:var(--hostile)">Jaune</span></td><td rowspan="2">Hostile</td></tr>
+    <tr><td class="c">2</td><td><span class="chip" style="background:var(--hostile2)">Orange</span></td></tr>
+    <tr><td class="c">1</td><td><span class="chip" style="background:var(--assassin)">Rouge</span></td><td>Assassin</td></tr>
+    <tr><td class="c">0</td><td>Gris</td><td>Éliminé</td></tr>
+  </table>
+  <div class="pair">
+    <figure><img src="shots/02_pseudos_couleurs.jpg"><figcaption>Pseudos colorés : Alice (5), Bruno (4), Chloé (3), David (2), Emma (1).</figcaption></figure>
+    <figure><img src="shots/03_tab_vies.jpg"><figcaption>La liste <span class="k">Tab</span> affiche la couleur et le nombre de vies de chacun.</figcaption></figure>
+  </div>
+  <h3>Mourir et réapparaître</h3>
+  <p>Tu gardes ton inventaire, mais tu réapparais <b>n'importe où sur la carte</b> : la vraie conséquence d'une mort, c'est de <b>te perdre</b>. La commande <span class="k">/death-history</span> liste toutes tes morts : date, coordonnées, cause et, si un joueur est responsable, son nom.</p>
+  <div class="trio">
+    <figure><img src="shots/04_ecran_mort.jpg"><figcaption>Chaque mort retire une vie.</figcaption></figure>
+    <figure><img src="shots/05_reapparition.jpg"><figcaption>Réapparition à un endroit aléatoire de la carte.</figcaption></figure>
+    <figure><img src="shots/09_death_history.jpg"><figcaption><span class="k">/death-history</span> dans le chat.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>3. Les rôles</h2>
+  <h3><span class="chip" style="background:var(--passif)">Passif</span> — 5 et 4 vies</h3>
+  <p>Tu n'as pas le droit de frapper les autres passifs ni les hostiles. Tu peux te défendre contre un <b>assassin</b> ou contre le <b>Croquemitaine</b>, à condition d'être à <b>40 blocs ou moins</b> de lui. Cette distance limite surtout l'arc, l'arbalète et le trident.</p>
+  <h3><span class="chip" style="background:var(--hostile)">Hostile</span> — 3 et 2 vies</h3>
+  <p>Tu as le droit d'attaquer les <b>passifs</b>, mais pas les autres hostiles. Comme un passif, tu peux frapper un assassin ou le Croquemitaine à 40 blocs ou moins.</p>
+  <h3><span class="chip" style="background:var(--assassin)">Assassin</span> — 1 vie</h3>
+  <p>Plus rien ne te retient : tu peux frapper <b>tout le monde</b>. En échange, tout le monde peut se défendre contre toi. Un assassin ne peut jamais être désigné Croquemitaine.</p>
+  <h3>Éliminé — 0 vie</h3>
+  <p>Tu es envoyé dans une <b>boîte aux murs invisibles, au-dessus de la carte</b>, en mode aventure et invulnérable, et tu y retournes même après une déconnexion. Pour ne rien dévoiler aux vivants, <b>ton chat n'est lu que par les autres éliminés</b>, et tu es muet en vocal.</p>
+  <div class="trio">
+    <figure><img src="shots/06_devenu_hostile.jpg"><figcaption>À 3 vies, le chat annonce ton nouveau rôle : hostile.</figcaption></figure>
+    <figure><img src="shots/07_devenu_assassin.jpg"><figcaption>À 1 vie : assassin, pseudo rouge dans la liste.</figcaption></figure>
+    <figure><img src="shots/08_boite_elimination.jpg"><figcaption>La boîte d'élimination : David et Emma attendent la fin de la partie.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>4. Qui a le droit de frapper qui ?</h2>
+  <p>Ce tableau est une <b>règle d'honneur</b> pour les <b>coups directs</b> (épée, poing, arc…) : le jeu ne bloque rien, c'est à chacun de la respecter. Inutile de frapper tout le monde « pour voir » qui est le Croquemitaine !</p>
+  <table>
+    <tr><th>Attaquant ↓ / Cible →</th><th>Passif</th><th>Hostile</th><th>Assassin</th><th>Croquemitaine</th></tr>
+    <tr><th>Passif</th><td class="no">Non</td><td class="no">Non</td><td class="cond">Si ≤ 40 blocs</td><td class="cond">Si ≤ 40 blocs</td></tr>
+    <tr><th>Hostile</th><td class="yes">Oui</td><td class="no">Non</td><td class="cond">Si ≤ 40 blocs</td><td class="cond">Si ≤ 40 blocs</td></tr>
+    <tr><th>Assassin</th><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td></tr>
+    <tr><th>Croquemitaine</th><td class="yes">Oui</td><td class="yes">Oui</td><td class="no">Non</td><td>—</td></tr>
+  </table>
+  <div class="box">
+    <ul>
+      <li>Le Croquemitaine <b>garde sa couleur</b> pour être attaqué : un hostile peut toujours frapper un Croquemitaine passif.</li>
+      <li>Le <b>PvP indirect est libre et encouragé</b> : potions, pièges à TNT, trous, lave, monstres sortis de tes œufs…</li>
+      <li>Une mort par chute, lave ou vide juste après un coup est attribuée au dernier joueur qui t'a frappé dans les <b>10 secondes</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>5. Le Croquemitaine : l'annonce</h2>
+  <p>À partir de la <b>manche 2</b>, un joueur est tiré au sort parmi les <b>passifs et hostiles connectés</b>. Tout le monde voit la même animation, au même rythme : impossible de deviner qui a été choisi en observant les autres.</p>
+  <figure><img src="shots/10_annonce_suspense.jpg"><figcaption>Quelques secondes de suspense, identiques pour tous.</figcaption></figure>
+  <div class="pair">
+    <figure><img src="shots/11_pas_le_croque.jpg"><figcaption>Pour la plupart des joueurs : « Tu n'es pas le Croquemitaine ».</figcaption></figure>
+    <figure><img src="shots/12_tu_es_le_croque.jpg"><figcaption>Pour l'élu : « Tu es le Croquemitaine » et sa mission. Le chrono secret apparaît en haut.</figcaption></figure>
+  </div>
+  <p>Personne d'autre ne connaît son identité, et c'est à lui de rester discret.</p>
+</section>
+
+<section>
+  <h2>6. Le Croquemitaine : pouvoirs et mission</h2>
+  <h3>Choisir son pouvoir</h3>
+  <p>Juste après l'annonce s'ouvre une <b>roulette de 2 pouvoirs</b> tirés au hasard : tu en choisis un en cliquant dessus. Au bout de 15 s, ou si tu fermes la fenêtre, le choix est fait au hasard. Selon le mode choisi par l'organisateur, le pouvoir peut aussi être <b>tiré directement au hasard</b>, sans roulette.</p>
+  <div class="pair">
+    <figure><img src="shots/13_roulette_pouvoirs.jpg"><figcaption>La roulette : 2 pouvoirs proposés.</figcaption></figure>
+    <figure><img src="shots/14_chrono_et_pouvoirs.jpg"><figcaption>Le chrono secret (barre rouge, visible par toi seul) et les items de pouvoir dans ta barre.</figcaption></figure>
+  </div>
+  <h3>Les pouvoirs</h3>
+  <table>
+    <tr><th>Pouvoir</th><th>Effet</th><th>Type</th></tr>
+    <tr><td>Traqueur</td><td>Une boussole pointe vers la cible la plus proche (mise à jour toutes les 5 s).</td><td>Passif</td></tr>
+    <tr><td>Ombre</td><td>Invisibilité 20 s, armure et objet en main masqués. Recharge 2 min.</td><td>Actif</td></tr>
+    <tr><td>Prédateur</td><td>Vitesse II pendant toute la mission.</td><td>Passif</td></tr>
+    <tr><td>Brute</td><td>Force I.</td><td>Passif</td></tr>
+    <tr><td>Carapace</td><td>Résistance I.</td><td>Passif</td></tr>
+    <tr><td>Sursis</td><td>+3 min sur ton chrono (seulement le Croque qui le tire, pas en héritage).</td><td>Immédiat</td></tr>
+    <tr><td>Second souffle</td><td>Ta première mort ne fait pas échouer la mission.</td><td>Passif</td></tr>
+    <tr><td>Aveuglement</td><td>Cécité 4 s aux joueurs à 8 blocs ou moins. Recharge 90 s.</td><td>Actif</td></tr>
+    <tr><td>Saut de l'ombre</td><td>Une fois : téléportation derrière la cible la plus proche (≤ 30 blocs).</td><td>Actif</td></tr>
+    <tr><td>Morsure</td><td>Tes coups infligent Lenteur II pendant 3 s.</td><td>Passif</td></tr>
+    <tr><td>Révélation</td><td>Une fois : la cible la plus proche est signalée par des particules pendant 10 s, visibles par toi seul.</td><td>Actif</td></tr>
+  </table>
+  <p>Les pouvoirs <b>actifs</b> s'utilisent par <b>clic droit</b> avec leur item. Ces items ne peuvent être ni jetés ni rangés, et disparaissent à la fin de la mission.</p>
+</section>
+
+<section>
+  <h2>6. (suite) Utiliser ses pouvoirs, réussir ou échouer</h2>
+  <div class="pair">
+    <figure><img src="shots/15_inventaire_pouvoirs.jpg"><figcaption>Les items de pouvoir dans l'inventaire.</figcaption></figure>
+    <figure><img src="shots/16_revelation.jpg"><figcaption>Révélation : la cible (Alice) est signalée par des particules que seul le Croque voit.</figcaption></figure>
+  </div>
+  <p>Ta mission : tuer <b>de ta propre main</b> un <b>passif ou un hostile</b> avant la fin du chrono. Coups, flèches, TNT, monstres sortis de tes œufs… tout ce que tu déclenches toi-même compte.</p>
+  <table>
+    <tr><th>Situation</th><th>Conséquence</th></tr>
+    <tr><td><b>Kill réussi</b></td><td>Tu es libéré et tu perds tes pouvoirs, mais <b>la manche continue</b> jusqu'au bout du chrono, sans nouveau Croquemitaine. Personne ne sait que ta mission a réussi : reste discret !</td></tr>
+    <tr><td><b>Chrono écoulé</b></td><td>Tu perds <b>1 vie</b>, la manche se termine et un nouveau Croque est tiré.</td></tr>
+    <tr><td><b>Tu meurs pendant la mission</b></td><td>Mission ratée, mais pas de vie en plus (tu as déjà perdu celle de ta mort). Nouvelle manche.</td></tr>
+    <tr><td><b>Tu te déconnectes</b></td><td>Tant pis pour toi : le chrono continue, et s'il expire, tu perds ta vie quand même.</td></tr>
+  </table>
+  <div class="pair">
+    <figure><img src="shots/17_mission_reussie.jpg"><figcaption>Kill réussi : « Mission accomplie », la manche continue en silence.</figcaption></figure>
+    <figure><img src="shots/19_temps_ecoule.jpg"><figcaption>Chrono écoulé : « Le temps est écoulé : tu perds une vie ».</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>L'héritage des pouvoirs</h2>
+  <p>Chaque nouveau Croquemitaine reçoit <b>tous les pouvoirs des Croques précédents</b> de la partie, plus <b>un nouveau</b>. Le Croque devient donc de plus en plus fort, mais dispose de moins en moins de temps.</p>
+  <figure style="width:75%"><img src="shots/20_heritage_status.jpg"><figcaption>Vue organisateur (<span class="k">/croque status</span>) : à la manche 4, le Croque cumule Révélation, Aveuglement, Traqueur, Carapace et Prédateur.</figcaption></figure>
+</section>
+
+<section class="cont">
+  <h2>7. Face au Croquemitaine</h2>
+  <p>Tu ne sais pas qui il est. Quelques réflexes :</p>
+  <ul>
+    <li>Méfie-toi de quelqu'un qui <b>te suit</b> ou qui arrive pile sur toi : le Traqueur et la Révélation l'aident à te trouver.</li>
+    <li>Le Croque a le droit de frapper tout le monde sauf les assassins : un passif qui attaque un passif, c'est suspect…</li>
+    <li>Il peut aussi tuer indirectement : méfie-toi des pièges, des trous et des monstres qui te tombent dessus.</li>
+    <li>Tu peux toujours te défendre contre lui s'il est à 40 blocs ou moins.</li>
+  </ul>
+  <figure style="width:75%"><img src="shots/18_aveugle_par_le_croque.jpg"><figcaption>Victime du pouvoir Aveuglement : quelques secondes dans le noir, le Croque juste devant.</figcaption></figure>
+</section>
+
+<section>
+  <h2>8. Règles spéciales</h2>
+  <table>
+    <tr><th>Règle</th><th>Détail</th></tr>
+    <tr><td>Table d'enchantement</td><td>Impossible à fabriquer. Il n'en existe <b>qu'une seule</b>, au centre de la carte, incassable et résistante aux explosions.</td></tr>
+    <tr><td>Casques interdits</td><td>Tu <b>peux</b> mettre un casque (ou citrouille, tête…), mais tu es <b>empoisonné (Poison II)</b> tant que tu le portes.</td></tr>
+    <tr><td>Phantoms</td><td>Aucun phantom : tu peux rester éveillé sans risque.</td></tr>
+    <tr><td>Œufs de monstres</td><td>Tuer un monstre hostile a <b>25 %</b> de chances de faire tomber l'œuf d'un <b>autre</b> monstre (boss exclus). Ce monstre agit pour toi et respecte tes droits d'attaque.</td></tr>
+    <tr><td>TNT simplifiée</td><td><b>1 poudre à canon + 4 sable</b>, en plus de la recette normale.</td></tr>
+  </table>
+  <div class="pair">
+    <figure><img src="shots/21_table_enchantement.jpg"><figcaption>L'unique table d'enchantement, au centre.</figcaption></figure>
+    <figure><img src="shots/22_casque_interdit.jpg"><figcaption>Casque sur la tête : empoisonné tant qu'il est porté (cœurs verts).</figcaption></figure>
+  </div>
+  <figure style="width:60%"><img src="shots/23_oeuf_de_mob.jpg"><figcaption>Un zombie tué laisse tomber l'œuf d'un autre monstre.</figcaption></figure>
+</section>
+
+<section>
+  <h2>9. Fin de partie</h2>
+  <p>Quand il <b>ne reste que des assassins</b> (au moins deux), plus aucun Croquemitaine ne peut être désigné : après un court délai, la <b>bordure se referme</b> progressivement pour forcer l'affrontement.</p>
+  <figure><img src="shots/24_assassins_seuls.jpg"><figcaption>La bordure (zone hachurée rouge) se referme sur les derniers assassins.</figcaption></figure>
+  <p>Le <b>dernier survivant</b> remporte la partie : annonce à tous et feu d'artifice.</p>
+  <figure><img src="shots/25_victoire.jpg"><figcaption>Victoire !</figcaption></figure>
+</section>
+
+<section>
+  <h2>10. Pour l'organisateur</h2>
+  <table>
+    <tr><th>Commande</th><th>Effet</th></tr>
+    <tr><td><span class="k">/croque start</span></td><td>Lance la partie : carte, règles, table, apparition aléatoire de tous, manche 1.</td></tr>
+    <tr><td><span class="k">/croque pause</span> · <span class="k">resume</span></td><td>Gèle / reprend le chrono.</td></tr>
+    <tr><td><span class="k">/croque stop</span></td><td>Termine la partie et nettoie tout.</td></tr>
+    <tr><td><span class="k">/croque force &lt;joueur&gt;</span></td><td>Désigne le Croquemitaine de la manche.</td></tr>
+    <tr><td><span class="k">/croque givepower &lt;pouvoir&gt;</span></td><td>Donne un pouvoir au Croque actuel.</td></tr>
+    <tr><td><span class="k">/croque skip</span></td><td>Termine la manche sans pénalité.</td></tr>
+    <tr><td><span class="k">/croque lives &lt;joueur&gt; set|add|remove &lt;n&gt;</span></td><td>Modifie les vies.</td></tr>
+    <tr><td><span class="k">/croque revive &lt;joueur&gt;</span></td><td>Sort un éliminé de la boîte avec 1 vie.</td></tr>
+    <tr><td><span class="k">/croque border &lt;taille&gt; [secondes]</span></td><td>Ajuste la bordure.</td></tr>
+    <tr><td><span class="k">/croque status</span></td><td>Croque actuel, pouvoirs, chrono et vies de chacun (admins seulement).</td></tr>
+    <tr><td><span class="k">/croque reload</span></td><td>Recharge la configuration et les messages.</td></tr>
+  </table>
+  <h3>Réglages principaux (config.yml)</h3>
+  <ul>
+    <li><span class="k">powers.mode</span> : <b>choice</b> (roulette de 2) ou <b>random</b> (tiré au hasard).</li>
+    <li><span class="k">powers.inherit</span> : héritage cumulatif des pouvoirs (activé par défaut).</li>
+    <li><span class="k">rounds.*</span> : durée initiale, réduction par manche, durée minimale, entracte.</li>
+    <li><span class="k">pvp.defense-radius</span> : distance de défense (40 blocs) quand le plugin applique la matrice.</li>
+    <li><span class="k">pvp.enforce</span> : <b>false</b> (défaut, règle d'honneur) ou <b>true</b> (le plugin bloque les coups interdits).</li>
+    <li><span class="k">elimination.mode</span> : <b>box</b> (défaut) ou <b>spectator</b> ; <span class="k">elimination.private-chat</span> : chat des éliminés réservé aux éliminés.</li>
+    <li><span class="k">rules.helmet-mode</span> : <b>poison</b> (défaut) ou <b>block</b> ; <span class="k">rules.phantoms</span> : phantoms (désactivés par défaut).</li>
+    <li><span class="k">rules.recovery-compass</span> : boussole vers le dernier lieu de mort (désactivée par défaut).</li>
+    <li><span class="k">rules.*</span> : chance d'œuf, TNT, casques, table d'enchantement.</li>
+  </ul>
+  <h3>Côté joueurs</h3>
+  <p>Minecraft 26.3 avec Fabric et le mod <b>Simple Voice Chat</b> pour le vocal de proximité (portée conseillée : environ 18 blocs, groupes désactivés).</p>
+  <p class="small">Captures réalisées automatiquement en jeu, sur un serveur de test, avec des joueurs simulés (Alice, Bruno, Chloé, David, Emma) et des durées de manche raccourcies.</p>
+</section>
+
+</body>
+</html>
