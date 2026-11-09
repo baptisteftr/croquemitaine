@@ -26,7 +26,8 @@ Mini-jeu de survie pour 5 à 25 joueurs. Chacun a **5 vies** et le dernier en vi
 - **But :** être le **dernier joueur en vie**. Tout le monde démarre avec **5 vies**.
 - **Toute mort coûte une vie**, quelle qu'en soit la cause (monstre, chute, lave, joueur…).
 - Ton **nombre de vies fixe ton rôle** (passif, hostile, assassin) et donc qui tu as le droit de frapper. Ces règles se respectent **sur l'honneur** : le jeu ne bloque aucun coup.
-- Le **PvP indirect est encouragé** : potions, pièges à TNT, trous, monstres sortis d'œufs…
+- Le **PvP indirect est encouragé** : potions, pièges à TNT, trous, lave…
+- **Toutes les morts s'affichent dans le chat**, y compris celles causées par le Croquemitaine.
 - La partie se joue en **manches**. À partir de la manche 2, un joueur est désigné en secret **Croquemitaine**.
 - La carte est **fermée par une bordure** (300 × 300 à 5 joueurs, jusqu'à 500 × 500 à 25). On apparaît et on réapparaît **à un endroit aléatoire**.
 - On **garde son inventaire** à la mort : la vraie conséquence d'une mort, c'est de **se perdre**. La barre de localisation est désactivée.
@@ -52,7 +53,7 @@ La couleur du pseudo indique les vies restantes, partout : au-dessus de la tête
 
 ### Mourir et réapparaître
 
-Tu gardes ton inventaire, mais tu réapparais **n'importe où sur la carte**. La commande `/death-history` liste toutes tes morts : date, coordonnées, cause et, si un joueur est responsable, son nom.
+Tu gardes ton inventaire, mais tu réapparais **n'importe où sur la carte**. La commande `/death-history` liste toutes tes morts : date, cause et, si un joueur est responsable, son nom (sans les coordonnées).
 
 | Mort | Réapparition aléatoire | `/death-history` |
 |---|---|---|
@@ -81,7 +82,7 @@ Ce tableau vaut pour les **coups directs**. Le jeu ne bloque rien : c'est à cha
 | **Croquemitaine** | ✅ | ✅ | ❌ | — |
 
 - Le Croquemitaine garde sa couleur pour être attaqué : un hostile peut toujours frapper un Croque passif.
-- Le **PvP indirect est libre** : potions, pièges à TNT, trous, lave, monstres sortis de tes œufs…
+- Le **PvP indirect est libre** : potions, pièges à TNT, trous, lave…
 - Une mort par chute, lave ou vide juste après un coup est attribuée au dernier joueur qui t'a frappé dans les **10 secondes**.
 
 > L'organisateur peut faire appliquer ce tableau par le plugin (`pvp.enforce: true`) : les coups interdits sont alors annulés.
@@ -128,11 +129,11 @@ Les pouvoirs **actifs** s'utilisent par **clic droit** avec leur item. Ces items
 
 ### Le Croquemitaine : la mission
 
-Il doit tuer **de sa propre main** un **passif ou un hostile** avant la fin du chrono. Coups, flèches, TNT, monstres sortis de ses œufs : tout ce qu'il déclenche lui-même compte.
+Il doit tuer **de sa propre main** un **passif ou un hostile** avant la fin du chrono. Coups, flèches, potions, TNT qu'il a allumée, chute juste après son coup : tout ce qu'il déclenche lui-même compte.
 
 | Situation | Conséquence |
 |---|---|
-| **Kill réussi** | Il est libéré et perd ses pouvoirs, mais **la manche continue** jusqu'au bout du chrono, sans nouveau Croque. Personne ne sait que la mission a réussi. |
+| **Kill réussi** | Il est libéré et perd ses pouvoirs, mais **la manche continue** jusqu'au bout du chrono, sans nouveau Croque. La mort de la victime s'affiche dans le chat comme toutes les autres, mais rien n'indique que c'était le Croque. |
 | **Chrono écoulé** | Il perd **1 vie**. Nouvelle manche, nouveau tirage. |
 | **Il meurt pendant la mission** | Mission ratée, sans vie supplémentaire perdue. Nouvelle manche. |
 | **Il se déconnecte** | Le chrono continue. S'il expire, il perd sa vie quand même. |
@@ -150,7 +151,7 @@ Il doit tuer **de sa propre main** un **passif ou un hostile** avant la fin du c
 | Table d'enchantement | Impossible à fabriquer. Une **seule**, au centre de la carte, incassable et résistante aux explosions. |
 | Casques | On **peut** porter un casque, une citrouille ou une tête, mais on est **empoisonné (Poison II)** tant qu'on le porte. |
 | Phantoms | Désactivés. |
-| Œufs de monstres | Tuer un monstre hostile a **25 %** de chances de faire tomber l'œuf d'un **autre** monstre (boss exclus). Ce monstre agit pour son propriétaire. |
+| Œufs de monstres | Tuer un monstre hostile a **25 %** de chances de faire tomber l'œuf d'un **autre** monstre (boss exclus). C'est un monstre normal, à chacun de s'adapter. |
 | TNT simplifiée | **1 poudre à canon + 4 sable**, en plus de la recette normale. |
 
 | Table d'enchantement | Casque = poison | Œuf de monstre |
@@ -196,7 +197,7 @@ Il doit tuer **de sa propre main** un **passif ou un hostile** avant la fin du c
 
 - **La carte :** la partie se joue dans le monde `world`, centrée sur `map.center` (0, 0 par défaut). Choisis un centre **sur la terre ferme** : si la zone est surtout de l'eau, les réapparitions retombent au centre et la console affiche un avertissement.
 - **La boîte d'élimination** est construite automatiquement au-dessus du centre (y = 300), et la **table d'enchantement** est posée au centre au lancement.
-- **Les règles du monde** (`keepInventory`, barre de localisation, phantoms, rayon d'apparition…) sont appliquées automatiquement par `/croque start` : rien à régler à la main.
+- **Les règles du monde** (`keepInventory`, barre de localisation, messages de mort, phantoms, rayon d'apparition…) sont appliquées automatiquement par `/croque start` : rien à régler à la main.
 - **Sauvegardes :** l'état de la partie est enregistré dans `plugins/Croquemitaine/game.json` (toutes les 30 s et à chaque événement). Une partie survit à un redémarrage du serveur, chrono compris.
 
 ### En local, pour tester
@@ -340,6 +341,7 @@ endgame:                   # quand il ne reste que des assassins
 rules:
   mob-egg-chance: 0.25     # chance (0 à 1) qu'un monstre hostile tué lâche un œuf
   mob-egg-excluded: [ENDER_DRAGON, WITHER, WARDEN, ELDER_GUARDIAN]
+  mob-egg-owner: false     # false : mob d'œuf normal | true : il agit pour le joueur (ses kills lui sont attribués)
   tnt-simplified: true     # recette 1 poudre + 4 sable
   helmet-ban: true         # règle des casques active
   helmet-mode: poison      # poison : casque portable mais Poison II tant qu'il est porté | block : impossible à équiper
@@ -347,6 +349,7 @@ rules:
   enchanting-table-at-center: true
   immediate-respawn: false # réapparition sans écran de mort
   recovery-compass: false  # boussole vers le dernier lieu de mort
+  death-history-coordinates: false  # /death-history affiche les coordonnées des morts
 
 voice:
   mute-eliminated: true    # éliminés muets en vocal (si Simple Voice Chat est installé)

@@ -119,7 +119,7 @@ export const BASE_CONFIG = {
   'announce-suspense-seconds': 1, 'power-choice-seconds': 2, 'mob-egg-chance': 0.25,
   'shrink-delay-seconds': 60, 'mode': 'choice', 'inherit': 'true', x: CX, z: CZ,
   'roulette-delay-seconds': 0, 'intermission-seconds': 0, 'immediate-respawn': 'false',
-  'elimination.mode': 'box', 'private-chat': 'true', 'enforce': 'false', 'recovery-compass': 'false', 'helmet-mode': 'poison', 'phantoms': 'false',
+  'elimination.mode': 'box', 'private-chat': 'true', 'enforce': 'false', 'recovery-compass': 'false', 'helmet-mode': 'poison', 'phantoms': 'false', 'mob-egg-owner': 'false', 'death-history-coordinates': 'false',
 };
 export async function applyConfig(over = {}) {
   writeConfig({ ...BASE_CONFIG, ...over });

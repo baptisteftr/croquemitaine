@@ -107,7 +107,13 @@ async function j2() {
   bots[A].chat('/death-history');
   await sleep(1200);
   const lines = bots[A].messages.filter((m) => /^#\d+ /.test(m));
-  check('/death-history liste les 22 morts', lines.length === 22, `${lines.length} lignes ; ex: ${lines[0] ?? ''}`);
+  check('/death-history sans coordonnées par défaut', lines.length > 0 && !lines.some((l) => /— -?\d+ -?\d+ -?\d+ —/.test(l)), lines[0] ?? '');
+  bots[B].messages.length = 0;
+  await cmd(`kill ${A}`);
+  await sleep(1200);
+  check('Les morts s\'affichent dans le chat de tous', bots[B].messages.some((m) => m.includes(A)), bots[B].messages.join(' | '));
+  await cmd(`croque lives ${A} set 5`);
+  check('/death-history liste les 22 morts', lines.length >= 22, `${lines.length} lignes ; ex: ${lines[0] ?? ''}`);
 }
 
 // ------------------------------------------------------------------ J3
@@ -322,7 +328,15 @@ async function j5() {
     if (id === 'reprieve') present = (await roundInfo()).seconds >= before + 170;
     check(`[${id}] accordé`, present);
     // Fin de mission
-    if (ending === 'success') { await cmd(`damage ${C} 100 minecraft:player_attack by ${A}`); }
+    if (ending === 'success') {
+      const it = POWER_ITEMS[id] && bots[A].inventory.items().find((x) => x.name === POWER_ITEMS[id]);
+      if (it) await bots[A].equip(it, 'hand'); // tuer avec l'item de pouvoir en main
+      bots[B].messages.length = 0;
+      await cmd(`damage ${C} 100 minecraft:player_attack by ${A}`);
+      await sleep(800);
+      const dm = bots[B].messages.find((m) => m.includes(C)) ?? '';
+      check(`[${id}] message de mort sans nom de pouvoir`, dm && !/\[/.test(dm), dm);
+    }
     if (ending === 'death') { await cmd(`kill ${A}`); if (id === 'second_wind') { await sleep(1500); await cmd(`kill ${A}`); } }
     if (ending === 'skip') await cmd('croque skip');
     // La manche suivante tire un Croque au hasard, qui peut retomber sur A : on force B.
@@ -369,7 +383,7 @@ async function j5() {
 // ------------------------------------------------------------------ J6
 async function j6() {
   section('J6 — règles spéciales');
-  await freshGame([A, B, C], { 'mob-egg-chance': 1.0, enforce: 'true', 'helmet-mode': 'block' });
+  await freshGame([A, B, C], { 'mob-egg-chance': 1.0, enforce: 'true', 'helmet-mode': 'block', 'mob-egg-owner': 'true' });
   await cmd('difficulty easy');
   await placeApart(A, B, 6);
   await cmd(`clear ${A}`);
@@ -403,7 +417,7 @@ async function j6() {
   await sleep(800);
   const tagged = await cmd('execute if entity @e[type=creeper,nbt={Paper.SpawnReason:"SPAWNER_EGG"}]');
   const pdc = await cmd('data get entity @e[type=creeper,limit=1,nbt={Paper.SpawnReason:"SPAWNER_EGG"}] BukkitValues');
-  check('Creeper d\'œuf marqué avec son propriétaire', /croquemitaine:egg_owner/.test(pdc), pdc.slice(0, 120) || tagged);
+  check('Option mob-egg-owner : creeper d\'œuf marqué avec son propriétaire', /croquemitaine:egg_owner/.test(pdc), pdc.slice(0, 120) || tagged);
   await cmd(`tp @e[type=creeper] ${at(7.5, 200, 0.5)}`);
   await heal(B);
   let before = await health(B);
@@ -456,6 +470,16 @@ async function j6() {
   await cmd(`item replace entity ${A} armor.head with minecraft:air`);
   await sleep(2000);
   check('Mode poison : poison retiré avec le casque', !(await hasEffect(A, 'poison')));
+
+  // Par défaut, un mob d'œuf est un mob normal (aucun propriétaire).
+  await applyConfig({ 'mob-egg-chance': 1.0, 'mob-egg-owner': 'false' });
+  await cmd('kill @e[type=creeper]');
+  await cmd(`gamemode survival ${A}`);
+  await placeApart(A, B, 8);
+  await activateEgg();
+  const plain = await cmd('data get entity @e[type=creeper,limit=1,nbt={Paper.SpawnReason:"SPAWNER_EGG"}]');
+  check('Défaut : mob d\'œuf sans propriétaire', /Creeper has/.test(plain) && !/egg_owner/.test(plain), plain.slice(0, 80));
+  await cmd('kill @e[type=creeper]');
 
   // Phantoms désactivés.
   check('Gamerule spawn_phantoms = false', /false/.test(await cmd('gamerule spawn_phantoms')));

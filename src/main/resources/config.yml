@@ -80,6 +80,7 @@ endgame:
 rules:
   mob-egg-chance: 0.25   # boosté : encourage le PvP indirect
   mob-egg-excluded: [ENDER_DRAGON, WITHER, WARDEN, ELDER_GUARDIAN]
+  mob-egg-owner: false   # false : un mob d'œuf est un mob normal | true : il agit pour le joueur (kill attribué)
   tnt-simplified: true
   helmet-ban: true
   helmet-mode: poison   # poison : casque portable mais Poison II tant qu'il est porté | block : impossible à équiper
@@ -87,6 +88,7 @@ rules:
   enchanting-table-at-center: true
   immediate-respawn: false
   recovery-compass: false   # boussole de récupération à la réapparition
+  death-history-coordinates: false   # /death-history affiche les coordonnées des morts
 
 voice:
   mute-eliminated: true

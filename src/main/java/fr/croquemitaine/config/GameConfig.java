@@ -44,6 +44,7 @@ public final class GameConfig {
 
     public final double mobEggChance;
     public final Set<String> mobEggExcluded;
+    public final boolean mobEggOwner, deathHistoryCoordinates;
     public final boolean tntSimplified, helmetBan, helmetPoison, phantoms, enchantingTableAtCenter, immediateRespawn, recoveryCompass;
 
     public final boolean muteEliminated;
@@ -118,6 +119,8 @@ public final class GameConfig {
         enchantingTableAtCenter = c.getBoolean("rules.enchanting-table-at-center", true);
         immediateRespawn = c.getBoolean("rules.immediate-respawn", false);
         recoveryCompass = c.getBoolean("rules.recovery-compass", false);
+        mobEggOwner = c.getBoolean("rules.mob-egg-owner", false);
+        deathHistoryCoordinates = c.getBoolean("rules.death-history-coordinates", false);
 
         muteEliminated = c.getBoolean("voice.mute-eliminated", true);
         autosaveSeconds = Math.max(5, c.getInt("storage.autosave-seconds", 30));

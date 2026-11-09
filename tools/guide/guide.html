@@ -74,7 +74,8 @@
     <li><b>But :</b> être le <b>dernier joueur en vie</b>. Chacun démarre avec <b>5 vies</b>.</li>
     <li><b>Toute mort coûte une vie</b> : monstre, chute, lave, joueur… peu importe la cause.</li>
     <li>Ton <b>nombre de vies fixe ton rôle</b> (passif, hostile, assassin) et donc qui tu as le droit de frapper. Ces règles se respectent <b>sur l'honneur</b> : le jeu ne bloque aucun coup.</li>
-    <li>Le <b>PvP indirect est encouragé</b> : potions, pièges à TNT, trous, monstres sortis d'œufs…</li>
+    <li>Le <b>PvP indirect est encouragé</b> : potions, pièges à TNT, trous, lave…</li>
+    <li><b>Toutes les morts s'affichent dans le chat</b>, y compris celles causées par le Croquemitaine.</li>
     <li>La partie se joue en <b>manches</b>. Dès la manche 2, un joueur est désigné en secret <b>Croquemitaine</b> : il doit tuer quelqu'un avant la fin de son chrono.</li>
     <li>Chaque nouveau Croquemitaine <b>hérite des pouvoirs</b> des précédents et en gagne un de plus, tandis que les manches <b>raccourcissent</b>.</li>
     <li>La carte est <b>fermée par une bordure</b> (300 × 300 à 5 joueurs, jusqu'à 500 × 500 à 25). On apparaît à un endroit aléatoire.</li>
@@ -103,7 +104,7 @@
     <figure><img src="shots/03_tab_vies.jpg"><figcaption>La liste <span class="k">Tab</span> affiche la couleur et le nombre de vies de chacun.</figcaption></figure>
   </div>
   <h3>Mourir et réapparaître</h3>
-  <p>Tu gardes ton inventaire, mais tu réapparais <b>n'importe où sur la carte</b> : la vraie conséquence d'une mort, c'est de <b>te perdre</b>. La commande <span class="k">/death-history</span> liste toutes tes morts : date, coordonnées, cause et, si un joueur est responsable, son nom.</p>
+  <p>Tu gardes ton inventaire, mais tu réapparais <b>n'importe où sur la carte</b> : la vraie conséquence d'une mort, c'est de <b>te perdre</b>. La commande <span class="k">/death-history</span> liste toutes tes morts : date, cause et, si un joueur est responsable, son nom (sans les coordonnées, sinon ce serait trop facile).</p>
   <div class="trio">
     <figure><img src="shots/04_ecran_mort.jpg"><figcaption>Chaque mort retire une vie.</figcaption></figure>
     <figure><img src="shots/05_reapparition.jpg"><figcaption>Réapparition à un endroit aléatoire de la carte.</figcaption></figure>
@@ -141,7 +142,7 @@
   <div class="box">
     <ul>
       <li>Le Croquemitaine <b>garde sa couleur</b> pour être attaqué : un hostile peut toujours frapper un Croquemitaine passif.</li>
-      <li>Le <b>PvP indirect est libre et encouragé</b> : potions, pièges à TNT, trous, lave, monstres sortis de tes œufs…</li>
+      <li>Le <b>PvP indirect est libre et encouragé</b> : potions, pièges à TNT, trous, lave…</li>
       <li>Une mort par chute, lave ou vide juste après un coup est attribuée au dernier joueur qui t'a frappé dans les <b>10 secondes</b>.</li>
     </ul>
   </div>
@@ -190,16 +191,16 @@
     <figure><img src="shots/15_inventaire_pouvoirs.jpg"><figcaption>Les items de pouvoir dans l'inventaire.</figcaption></figure>
     <figure><img src="shots/16_revelation.jpg"><figcaption>Révélation : la cible (Alice) est signalée par des particules que seul le Croque voit.</figcaption></figure>
   </div>
-  <p>Ta mission : tuer <b>de ta propre main</b> un <b>passif ou un hostile</b> avant la fin du chrono. Coups, flèches, TNT, monstres sortis de tes œufs… tout ce que tu déclenches toi-même compte.</p>
+  <p>Ta mission : tuer <b>de ta propre main</b> un <b>passif ou un hostile</b> avant la fin du chrono. Coups, flèches, potions, TNT que tu as allumée, chute juste après ton coup… tout ce que tu déclenches toi-même compte.</p>
   <table>
     <tr><th>Situation</th><th>Conséquence</th></tr>
-    <tr><td><b>Kill réussi</b></td><td>Tu es libéré et tu perds tes pouvoirs, mais <b>la manche continue</b> jusqu'au bout du chrono, sans nouveau Croquemitaine. Personne ne sait que ta mission a réussi : reste discret !</td></tr>
+    <tr><td><b>Kill réussi</b></td><td>Tu es libéré et tu perds tes pouvoirs, mais <b>la manche continue</b> jusqu'au bout du chrono, sans nouveau Croquemitaine. La mort de ta victime s'affiche dans le chat comme toutes les autres, mais rien n'indique que c'était le Croque : reste discret !</td></tr>
     <tr><td><b>Chrono écoulé</b></td><td>Tu perds <b>1 vie</b>, la manche se termine et un nouveau Croque est tiré.</td></tr>
     <tr><td><b>Tu meurs pendant la mission</b></td><td>Mission ratée, mais pas de vie en plus (tu as déjà perdu celle de ta mort). Nouvelle manche.</td></tr>
     <tr><td><b>Tu te déconnectes</b></td><td>Tant pis pour toi : le chrono continue, et s'il expire, tu perds ta vie quand même.</td></tr>
   </table>
   <div class="pair">
-    <figure><img src="shots/17_mission_reussie.jpg"><figcaption>Kill réussi : « Mission accomplie », la manche continue en silence.</figcaption></figure>
+    <figure><img src="shots/17_mission_reussie.jpg"><figcaption>Kill réussi : la mort s'affiche dans le chat de tous, et seul le Croque lit « Mission accomplie ».</figcaption></figure>
     <figure><img src="shots/19_temps_ecoule.jpg"><figcaption>Chrono écoulé : « Le temps est écoulé : tu perds une vie ».</figcaption></figure>
   </div>
 </section>
@@ -216,7 +217,7 @@
   <ul>
     <li>Méfie-toi de quelqu'un qui <b>te suit</b> ou qui arrive pile sur toi : le Traqueur et la Révélation l'aident à te trouver.</li>
     <li>Le Croque a le droit de frapper tout le monde sauf les assassins : un passif qui attaque un passif, c'est suspect…</li>
-    <li>Il peut aussi tuer indirectement : méfie-toi des pièges, des trous et des monstres qui te tombent dessus.</li>
+    <li>Il peut aussi tuer indirectement : méfie-toi des pièges, des trous et des potions.</li>
     <li>Tu peux toujours te défendre contre lui s'il est à 40 blocs ou moins.</li>
   </ul>
   <figure style="width:75%"><img src="shots/18_aveugle_par_le_croque.jpg"><figcaption>Victime du pouvoir Aveuglement : quelques secondes dans le noir, le Croque juste devant.</figcaption></figure>
@@ -229,7 +230,7 @@
     <tr><td>Table d'enchantement</td><td>Impossible à fabriquer. Il n'en existe <b>qu'une seule</b>, au centre de la carte, incassable et résistante aux explosions.</td></tr>
     <tr><td>Casques interdits</td><td>Tu <b>peux</b> mettre un casque (ou citrouille, tête…), mais tu es <b>empoisonné (Poison II)</b> tant que tu le portes.</td></tr>
     <tr><td>Phantoms</td><td>Aucun phantom : tu peux rester éveillé sans risque.</td></tr>
-    <tr><td>Œufs de monstres</td><td>Tuer un monstre hostile a <b>25 %</b> de chances de faire tomber l'œuf d'un <b>autre</b> monstre (boss exclus). Ce monstre agit pour toi et respecte tes droits d'attaque.</td></tr>
+    <tr><td>Œufs de monstres</td><td>Tuer un monstre hostile a <b>25 %</b> de chances de faire tomber l'œuf d'un <b>autre</b> monstre (boss exclus). C'est un monstre <b>normal</b> : à toi de t'en servir… ou de t'en méfier.</td></tr>
     <tr><td>TNT simplifiée</td><td><b>1 poudre à canon + 4 sable</b>, en plus de la recette normale.</td></tr>
   </table>
   <div class="pair">

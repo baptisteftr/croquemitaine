@@ -189,6 +189,8 @@ public final class GameManager implements Listener {
         w.setGameRule(GameRules.IMMEDIATE_RESPAWN, ctx.config().immediateRespawn);
         w.setGameRule(GameRules.RESPAWN_RADIUS, 0);
         w.setGameRule(GameRules.SPAWN_PHANTOMS, ctx.config().phantoms);
+        // Toutes les morts s'affichent dans le chat (y compris les kills du Croque) : ça fait le drama.
+        w.setGameRule(GameRules.SHOW_DEATH_MESSAGES, true);
     }
 
     public void stop() {

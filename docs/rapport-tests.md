@@ -1,4 +1,4 @@
-# Rapport des scénarios bots — 2026-11-09 23:26 — Paper 26.3 local
+# Rapport des scénarios bots — 2026-11-09 23:50 — Paper 26.3 local
 
 Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
 
@@ -32,7 +32,9 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ 20 respawns sur bloc sûr — 0 douteux
       ✅ Pas de boussole de récupération par défaut — 0
       ✅ Option recovery-compass : une seule boussole après 2 morts — 1
-      ✅ /death-history liste les 22 morts — 22 lignes ; ex: #1 09/11 23:20:31 — -123 72 357 — generic_kill
+      ✅ /death-history sans coordonnées par défaut — #1 09/11 23:41:21 — generic_kill
+      ✅ Les morts s'affichent dans le chat de tous — CmA was killed
+      ✅ /death-history liste les 22 morts — 22 lignes ; ex: #1 09/11 23:41:21 — generic_kill
     
     === J3 — PvP : aucune restriction par défaut, matrice si pvp.enforce ===
       ✅ Défaut : passif → passif en mêlée passe (règle d'honneur)
@@ -59,12 +61,12 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
     
     === J4 — manches et Croquemitaine ===
       ✅ Manche 1 sans Croque
-      ✅ Manche 2 : un Croque désigné — CmB
-      ✅ Seul le Croque voit « Tu es le Croquemitaine » — CmB
-      ✅ Les autres voient « Tu n'es pas… » — CmC,CmA,CmD
-      ✅ Chrono (bossbar) visible par le Croque seul — CmB
+      ✅ Manche 2 : un Croque désigné — CmD
+      ✅ Seul le Croque voit « Tu es le Croquemitaine » — CmD
+      ✅ Les autres voient « Tu n'es pas… » — CmB,CmC,CmA
+      ✅ Chrono (bossbar) visible par le Croque seul — CmD
       ✅ Durées décroissantes avec plancher — m3=360s m4=360s m5=360s m6=360s m7=360s
-      ✅ Tirage : jamais l'assassin ni le déconnecté — CmB,CmC
+      ✅ Tirage : jamais l'assassin ni le déconnecté — CmC,CmB
       ✅ Réussite : la manche continue (pas de nouveau tirage)
       ✅ Réussite : plus de Croque jusqu'à la fin du chrono
       ✅ Réussite : victime -1, Croque intact
@@ -75,6 +77,7 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
     
     === J5 — pouvoirs (attribution / révocation, 4 fins de mission) ===
       ✅ [tracker] accordé
+      ✅ [tracker] message de mort sans nom de pouvoir — CmC was slain by CmA
       ✅ [tracker] révoqué après success — items= effets= équipe=true
       ✅ [shadow] accordé
       ✅ [shadow] révoqué après death — items= effets= équipe=true
@@ -83,6 +86,7 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ [brute] accordé
       ✅ [brute] révoqué après /croque stop — items= effets=
       ✅ [shell] accordé
+      ✅ [shell] message de mort sans nom de pouvoir — CmC was slain by CmA
       ✅ [shell] révoqué après success — items= effets= équipe=true
       ✅ [reprieve] accordé
       ✅ [reprieve] révoqué après death — items= effets= équipe=true
@@ -91,6 +95,7 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ [second_wind] accordé
       ✅ [second_wind] révoqué après /croque stop — items= effets=
       ✅ [blind] accordé
+      ✅ [blind] message de mort sans nom de pouvoir — CmC was slain by CmA
       ✅ [blind] révoqué après success — items= effets= équipe=true
       ✅ [shadow_step] accordé
       ✅ [shadow_step] révoqué après death — items= effets= équipe=true
@@ -99,14 +104,14 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ [reveal] accordé
       ✅ [reveal] révoqué après /croque stop — items= effets=
       ✅ Aveuglement utilisé au clic droit → cible aveuglée
-      ✅ Mode random : pouvoir tiré sans roulette — shell
-      ✅ Héritage : le Croque suivant a les pouvoirs du précédent + 1 nouveau — shell → shell, bite
+      ✅ Mode random : pouvoir tiré sans roulette — predator
+      ✅ Héritage : le Croque suivant a les pouvoirs du précédent + 1 nouveau — predator → predator, reprieve
     
     === J6 — règles spéciales ===
-      ✅ Œufs : 10 zombies tués à 100 % → 10 œufs — donkey_spawn_eggx1 tropical_fish_spawn_eggx1 piglin_spawn_eggx1 pufferfish_spawn_eggx1 llama_spawn_eggx1 pig_spawn_eggx1 cod_spawn_eggx1 bogged_spawn_eggx1 shulker_spawn_eggx1 strider_spawn_eggx1
+      ✅ Œufs : 10 zombies tués à 100 % → 10 œufs — zombie_villager_spawn_eggx1 wolf_spawn_eggx1 creeper_spawn_eggx1 silverfish_spawn_eggx1 pig_spawn_eggx1 sheep_spawn_eggx1 pillager_spawn_eggx1 wandering_trader_spawn_eggx1 fox_spawn_eggx1 endermite_spawn_eggx1
       ✅ Œufs : jamais celui du mob tué
       ✅ Œufs : aucun boss
-      ✅ Creeper d'œuf marqué avec son propriétaire — Creeper has the following entity data: {"croquemitaine:egg_owner": "eaaafb03-b46a-3875-ad06-732ffe46d036"}
+      ✅ Option mob-egg-owner : creeper d'œuf marqué avec son propriétaire — Creeper has the following entity data: {"croquemitaine:egg_owner": "eaaafb03-b46a-3875-ad06-732ffe46d036"}
       ✅ Creeper du passif n'abîme pas l'hostile — 20→20
       ✅ Second creeper d'œuf apparu
       ✅ Creeper du passif blesse un assassin à ≤ 40 blocs (contrôle) — 20→7.1344633
@@ -118,16 +123,17 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ Mode poison : le casque reste porté
       ✅ Mode poison : Poison II appliqué
       ✅ Mode poison : poison retiré avec le casque
+      ✅ Défaut : mob d'œuf sans propriétaire — Creeper has the following entity data: {Paper.SpawnReason: "SPAWNER_EGG", DeathT
       ✅ Gamerule spawn_phantoms = false
       ✅ Aucun phantom ne peut apparaître
-      ✅ Table posée au centre — -180 62 350
+      ✅ Table posée au centre — -180 57 350
       ✅ Table résiste à une TNT
       ✅ Table incassable par un joueur
     
     === J7 — fin de partie ===
       ✅ 1 survivant → partie terminée — ENDED
       ✅ Titre de victoire reçu
-      ✅ 2 assassins → la bordure rétrécit — 300 → 259
+      ✅ 2 assassins → la bordure rétrécit — 300 → 261
       ✅ Pas de Croque possible entre assassins
     
     === J8 — commandes admin ===
@@ -148,14 +154,14 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ Non-admin : /croque stop refusé — Unknown or incomplete command. See below for error
     croque stop<--[HERE]
       ✅ Non-admin : /croque lives CmA set 1 refusé — Unknown or incomplete command. See below for error
-    croque lives CmA set 1<--[HERE]
+    croque lives CmA set 1<--[HERE] | [Croquemitaine] Manche 3 — elle durera 10:00. | CmA left the confines of this world
       ✅ Non-admin : /death-history d'un autre refusé — Incorrect argument for command
-    ...h-history CmA<--[HERE] | [Croquemitaine] Pouvoir obtenu : Révélation
+    ...h-history CmA<--[HERE]
       ✅ /croque stop
-      ✅ Hors partie : pas d'apparition sur le toit de la boîte — y=59.0
+      ✅ Hors partie : pas d'apparition sur le toit de la boîte — y=56.0
     
     === Persistance — redémarrage serveur en pleine partie ===
-      ✅ Partie restaurée (phase + manche) — {"phase":"RUNNING","round":1,"seconds":596} → {"phase":"RUNNING","round":1,"seconds":588}
+      ✅ Partie restaurée (phase + manche) — {"phase":"RUNNING","round":1,"seconds":597} → {"phase":"RUNNING","round":1,"seconds":588}
       ✅ Chrono restant conservé
       ✅ Vies conservées
       ✅ Croque et pouvoir conservés
@@ -165,4 +171,4 @@ Rejouer : `cd tests/bots && npm install && node scenarios.mjs`
       ✅ Sans voicechat : message d'absence, aucun crash
       ✅ Logs serveur sans ERROR / Exception
     
-    Résultat : 133/133 OK
+    Résultat : 139/139 OK

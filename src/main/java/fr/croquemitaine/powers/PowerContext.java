@@ -61,8 +61,9 @@ public final class PowerContext {
     public ItemStack powerItem(Material material, String powerId) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text(messages().raw("powers.names." + powerId), NamedTextColor.DARK_RED)
-                .decoration(TextDecoration.ITALIC, false));
+        // item_name et non custom_name : un nom personnalisé apparaîtrait dans les messages de mort
+        // (« tué par X avec [Aveuglement] ») et trahirait le Croque à tout le serveur.
+        meta.itemName(Component.text(messages().raw("powers.names." + powerId), NamedTextColor.DARK_RED));
         meta.lore(List.of(messages().get("powers.item-lore").decoration(TextDecoration.ITALIC, false)));
         meta.getPersistentDataContainer().set(keys.powerItem, PersistentDataType.STRING, powerId);
         item.setItemMeta(meta);

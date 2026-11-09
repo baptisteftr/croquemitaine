@@ -75,7 +75,7 @@ Un dégât est attribué à un joueur s'il en est l'auteur **direct ou indirect 
 - coup au corps à corps ;
 - projectile tiré par lui (flèche, trident, boule de neige, potion jetée, etc.) ;
 - TNT **qu'il a lui-même allumée** ;
-- **mob issu d'un œuf de spawn qu'il a utilisé** (mob marqué avec l'UUID du propriétaire, voir §6.8) ;
+- ~~mob issu d'un œuf de spawn~~ : **désactivé par défaut** (`rules.mob-egg-owner: false`, arbitrage du 2026-11-09 : les mobs d'œufs sont des mobs normaux) ;
 - loup apprivoisé par lui.
 Les dégâts indirects attribués **respectent la matrice PvP** de leur auteur (un passif ne peut pas tuer un hostile via un creeper d'œuf). Un œuf posé par un dispenser n'a pas de propriétaire → aucune attribution.
 
@@ -126,7 +126,8 @@ Les pouvoirs **actifs** s'utilisent via un **item dédié** non jetable (clic dr
 ### 1.8 Mort & réapparition
 - Réapparition à une **position aléatoire sûre**.
 - **Pas de boussole de récupération** par défaut (`rules.recovery-compass: false`) : avec le keepInventory, la conséquence d'une mort doit être de **se perdre** sur la carte. Option : boussole vanilla vers le dernier lieu de mort.
-- Commande **`/death-history`** : liste de ses morts (date, coordonnées, cause, tueur éventuel).
+- Commande **`/death-history`** : liste de ses morts (date, cause, tueur éventuel), **sans coordonnées** par défaut (`rules.death-history-coordinates: false`).
+- **Toutes les morts s'affichent dans le chat** (gamerule `show_death_messages` forcée au lancement), y compris les kills du Croque.
 
 ### 1.9 Fin de partie
 - **Victoire** : un seul joueur non éliminé → annonce, feu d'artifice, partie stoppée.

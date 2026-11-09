@@ -64,7 +64,9 @@ public final class DeathHistoryCommand {
             DeathRecord d = deaths.get(i);
             Component killer = d.killerName() == null ? Component.empty()
                     : m.get("death.history-killer", Messages.p("killer", d.killerName()));
-            to.sendMessage(m.get("death.history-line", Messages.p("index", i + 1),
+            // Sans coordonnées par défaut : mourir doit faire perdre son chemin (rules.death-history-coordinates).
+            String key = ctx.config().deathHistoryCoordinates ? "death.history-line" : "death.history-line-nocoords";
+            to.sendMessage(m.get(key, Messages.p("index", i + 1),
                     Messages.p("date", FMT.format(Instant.ofEpochMilli(d.timestampMillis()))),
                     Messages.p("x", d.x()), Messages.p("y", d.y()), Messages.p("z", d.z()),
                     Messages.p("cause", d.cause()), Messages.c("killer", killer)));

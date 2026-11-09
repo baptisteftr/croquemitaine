@@ -109,7 +109,8 @@ public final class MobEggDropListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onSpawn(CreatureSpawnEvent e) {
-        if (e.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER_EGG) return;
+        // Par défaut, un mob d'œuf est un mob normal : il n'agit pour personne (rules.mob-egg-owner).
+        if (!ctx.config().mobEggOwner || e.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER_EGG) return;
         int now = Bukkit.getCurrentTick();
         pending.values().removeIf(p -> now - p.tick() > 1);
         PendingEgg best = null;

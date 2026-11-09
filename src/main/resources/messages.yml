@@ -34,6 +34,7 @@ death:
   history-header: "<gold>Historique des morts de <player> :"
   history-empty: "<gray>Aucune mort enregistrée."
   history-line: "<gray>#<index> <white><date></white> — <yellow><x> <y> <z></yellow> — <cause><killer>"
+  history-line-nocoords: "<gray>#<index> <white><date></white> — <cause><killer>"
   history-killer: " <red>(tué par <killer>)</red>"
   unknown-player: "<red>Joueur inconnu de la partie."
 
