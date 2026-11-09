@@ -409,3 +409,11 @@ Le vocal passe par un **port UDP séparé** du port du jeu : c'est la cause de p
 | [`tools/modpack`](tools/modpack) | Profil **Modrinth** prêt à importer : Minecraft 26.3, Fabric, Simple Voice Chat, avec le serveur local déjà ajouté. |
 | [`tools/camera-mod`](tools/camera-mod) | **Mod client de captures automatiques** : un vrai client Minecraft qui prend des captures sur ordre du serveur, sans personne devant l'écran. Voir son [README](tools/camera-mod/README.md). |
 | [`tools/guide`](tools/guide) | Le **réalisateur** qui met en scène chaque phase, les captures, et la génération du [guide PDF](docs/Guide-Croquemitaine.pdf). |
+
+---
+
+## Licence
+
+Ce projet est sous licence [MIT](LICENSE) : tu peux l'utiliser, le modifier et le redistribuer librement, y compris sur un serveur public, à condition de conserver la mention de copyright.
+
+*Minecraft est une marque de Mojang Studios. Ce projet n'est ni affilié à Mojang ni approuvé par Mojang.*
